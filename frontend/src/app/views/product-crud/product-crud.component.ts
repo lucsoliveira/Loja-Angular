@@ -1,3 +1,4 @@
+import { HeaderService } from './../../components/template/header/header.service';
 import { Component, OnInit } from '@angular/core';
 
 //importando o Router
@@ -13,12 +14,18 @@ export class ProductCrudComponent implements OnInit {
   // passando o router para o construtor e ele injetará ele no módulo
   // podendo usar o router nas funções
   // isso se chama Injeção de dependência
-  constructor(private router: Router) { }
+  constructor(private router: Router, private headerService: HeaderService) {
 
+    headerService.headerData = {
+      title: 'Cadastro de Produtos',
+      icon: 'storefront',
+      routeUrl: '/products'
+    }
+  }
   ngOnInit(): void {
   }
 
-  navigateToProductCreate(): void{
+  navigateToProductCreate(): void {
     this.router.navigate(['/products/create'])
   }
 
